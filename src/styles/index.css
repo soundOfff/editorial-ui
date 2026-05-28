@@ -2,3 +2,6 @@
 
 @import './tokens.css';
 @import './base.css';
+
+/* Components */
+@import './components/button.css';

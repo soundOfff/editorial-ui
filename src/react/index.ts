@@ -2,4 +2,6 @@
 // Auto-import styles
 import '../styles/index.css';
 
-export {};
+// Primitives
+export { Button } from './primitives/Button';
+export type { ButtonProps } from './primitives/Button';
