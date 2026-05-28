@@ -1,0 +1,10 @@
+/* ─────────────────────────────────────────────
+   RADIO (dot specifics; shared base in checkbox.css)
+   ───────────────────────────────────────────── */
+.radio .dot { border-radius: 999px; }
+.radio .dot::after {
+  content: ""; width: 7px; height: 7px; border-radius: 999px;
+  background: var(--amber-deep);
+}
+.radio input:checked ~ .dot { border-color: var(--amber-deep); background: var(--amber-soft); }
+.radio input:checked ~ .dot::after { opacity: 1; }
