@@ -187,5 +187,66 @@
       </button>
     </div>
   </div>
+
+  <div class="example-section">
+    <h2>Form Inputs</h2>
+
+    <div class="label">Plain Input</div>
+    <div class="example-row">
+      <div class="field" style="flex:1">
+        <label class="field-label" for="ex-email">Email <span class="opt">required</span></label>
+        <input class="input" id="ex-email" type="email" placeholder="you@example.com">
+      </div>
+    </div>
+
+    <div class="label">Error State</div>
+    <div class="example-row">
+      <div class="field" style="flex:1">
+        <input class="input is-error" type="email" value="not-an-email" aria-invalid="true">
+        <span class="field-error">Enter a valid email address.</span>
+      </div>
+    </div>
+
+    <div class="label">Search Input (prefix icon)</div>
+    <div class="example-row">
+      <div class="input-group" style="flex:1">
+        <span class="affix">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </span>
+        <input type="search" placeholder="Search quotes…">
+      </div>
+    </div>
+
+    <div class="label">Unit Input (suffix label)</div>
+    <div class="example-row">
+      <div class="input-group" style="flex:1">
+        <input type="number" placeholder="16" value="16">
+        <span class="affix r">px</span>
+      </div>
+    </div>
+
+    <div class="label">Textarea</div>
+    <div class="example-row">
+      <div class="field" style="flex:1">
+        <label class="field-label" for="ex-notes">Notes</label>
+        <textarea class="textarea" id="ex-notes" rows="3" placeholder="Add a note…"></textarea>
+      </div>
+    </div>
+
+    <div class="label">Select (native)</div>
+    <div class="example-row">
+      <div class="field" style="flex:1">
+        <label class="field-label" for="ex-lang">Language</label>
+        <select class="select" id="ex-lang">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
