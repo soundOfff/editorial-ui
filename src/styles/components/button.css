@@ -1,0 +1,128 @@
+/* ─────────────────────────────────────────────
+   PRIMITIVES — BUTTON
+   ───────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 9px 13px;
+  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  letter-spacing: -0.005em;
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, color 0.12s;
+  white-space: nowrap;
+  user-select: none;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(242,160,60,0.22);
+  border-color: var(--amber-deep);
+}
+
+/* Primary amber */
+.btn-amber {
+  background: linear-gradient(180deg, #F4AC4F 0%, #EE9B30 100%);
+  color: #2A1A05;
+  border-color: #C77A1F;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.5) inset,
+    0 1px 2px rgba(40,30,15,0.15);
+}
+.btn-amber:hover { filter: brightness(1.03); }
+.btn-amber:active { filter: brightness(0.97); }
+
+/* Ghost */
+.btn-ghost {
+  background: var(--paper);
+  color: var(--ink-2);
+  border-color: var(--rule-2);
+  font-weight: 500;
+  font-size: 12.5px;
+  padding: 8px 11px;
+}
+.btn-ghost:hover { background: var(--paper-2); color: var(--ink); }
+
+/* Quiet (no border) */
+.btn-quiet {
+  background: transparent;
+  color: var(--ink-2);
+  font-weight: 500;
+  font-size: 12.5px;
+  padding: 8px 10px;
+}
+.btn-quiet:hover { background: var(--paper-2); color: var(--ink); }
+
+/* Destructive ghost */
+.btn-danger {
+  background: var(--paper);
+  color: var(--clay-ink);
+  border-color: var(--clay-edge);
+  font-weight: 500;
+  font-size: 12.5px;
+  padding: 8px 11px;
+}
+.btn-danger:hover { background: #F7E7DE; }
+
+/* Sage success pill */
+.btn-saved {
+  background: var(--sage-soft);
+  color: var(--sage-ink);
+  border-color: var(--sage-edge);
+  font-weight: 600;
+}
+
+/* Disabled */
+.btn[disabled], .btn.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Sizes */
+.btn-sm { font-size: 12px; padding: 6px 9px; border-radius: 7px; }
+.btn-md { /* default */ }
+.btn-lg { font-size: 14px; padding: 12px 16px; border-radius: 9px; }
+
+/* Icon-only */
+.btn-icon {
+  padding: 7px;
+  border-radius: 7px;
+  background: var(--paper);
+  border: 1px solid var(--rule-2);
+  color: var(--ink-2);
+}
+.btn-icon:hover { background: var(--paper-2); color: var(--ink); }
+.btn-icon.quiet { background: transparent; border-color: transparent; color: var(--muted); }
+.btn-icon.quiet:hover { background: var(--paper-2); color: var(--ink-2); }
+
+/* Block */
+.btn-block { width: 100%; }
+
+/* Button group */
+.btn-group {
+  display: inline-flex;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+  background: var(--paper);
+}
+.btn-group .btn {
+  border-radius: 0;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-2);
+  font-weight: 500;
+  box-shadow: none;
+}
+.btn-group .btn:last-child { border-right: 0; }
+.btn-group .btn:hover { background: var(--paper-2); }
+.btn-group .btn.is-active {
+  background: var(--paper-2);
+  color: var(--ink);
+  font-weight: 600;
+}
