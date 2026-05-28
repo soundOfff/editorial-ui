@@ -1,0 +1,76 @@
+{
+  "name": "editorial-ui",
+  "version": "0.1.0",
+  "description": "A component library built on editorial design principles — warm paper surfaces, one amber action per view, hairlines over shadows.",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js"
+    },
+    "./fonts.css": "./dist/styles/fonts.css",
+    "./tokens.css": "./dist/styles/tokens.css",
+    "./styles.css": "./dist/styles/index.css",
+    "./icons": {
+      "types": "./dist/react/icons/index.d.ts",
+      "import": "./dist/react/icons/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "design-system",
+    "editorial",
+    "css",
+    "typescript"
+  ],
+  "author": "Tomi Brasca <tomibrasca97@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soundOfff/editorial-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soundOfff/editorial-ui/issues"
+  },
+  "homepage": "https://github.com/soundOfff/editorial-ui#readme",
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "jsdom": "^29.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  }
+}
