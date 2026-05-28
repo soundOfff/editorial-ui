@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editorial UI - Token Test</title>
+  <link rel="stylesheet" href="./dist/styles/tokens.css">
+  <link rel="stylesheet" href="./dist/styles/base.css">
+  <style>
+    .test-card {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 32px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-card);
+    }
+    .test-card h1 {
+      font-family: var(--font-serif);
+      color: var(--ink);
+      margin: 0 0 16px 0;
+    }
+    .test-card p {
+      font-family: var(--font-sans);
+      color: var(--ink-2);
+      margin: 0 0 24px 0;
+    }
+    .token-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .token-name {
+      color: var(--muted);
+    }
+    .token-value {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .color-swatch {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid var(--rule);
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .controls {
+      margin-bottom: 24px;
+      display: flex;
+      gap: 12px;
+    }
+    button {
+      padding: 8px 16px;
+      background: var(--amber);
+      color: white;
+      border: 1px solid var(--amber-deep);
+      border-radius: var(--radius-control);
+      font-family: var(--font-sans);
+      font-weight: 500;
+      cursor: pointer;
+    }
+    button:hover {
+      background: var(--amber-deep);
+    }
+  </style>
+</head>
+<body>
+  <div class="test-card">
+    <h1>Editorial UI Token Test</h1>
+    <p>Testing CSS variable extraction and dark mode toggle</p>
+
+    <div class="controls">
+      <button onclick="document.documentElement.removeAttribute('data-theme')">Auto (OS preference)</button>
+      <button onclick="document.documentElement.setAttribute('data-theme', 'light')">Light</button>
+      <button onclick="document.documentElement.setAttribute('data-theme', 'dark')">Dark</button>
+    </div>
+
+    <div class="token-grid">
+      <div class="token-name">--paper</div>
+      <div class="token-value">
+        <span class="color-swatch" style="background: var(--paper);"></span>
+        <span id="paper-value"></span>
+      </div>
+
+      <div class="token-name">--ink</div>
+      <div class="token-value">
+        <span class="color-swatch" style="background: var(--ink);"></span>
+        <span id="ink-value"></span>
+      </div>
+
+      <div class="token-name">--amber</div>
+      <div class="token-value">
+        <span class="color-swatch" style="background: var(--amber);"></span>
+        <span id="amber-value"></span>
+      </div>
+
+      <div class="token-name">--muted</div>
+      <div class="token-value">
+        <span class="color-swatch" style="background: var(--muted);"></span>
+        <span id="muted-value"></span>
+      </div>
+
+      <div class="token-name">--rule</div>
+      <div class="token-value">
+        <span class="color-swatch" style="background: var(--rule);"></span>
+        <span id="rule-value"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateValues() {
+      const root = document.documentElement;
+      const computed = getComputedStyle(root);
+
+      document.getElementById('paper-value').textContent = computed.getPropertyValue('--paper').trim();
+      document.getElementById('ink-value').textContent = computed.getPropertyValue('--ink').trim();
+      document.getElementById('amber-value').textContent = computed.getPropertyValue('--amber').trim();
+      document.getElementById('muted-value').textContent = computed.getPropertyValue('--muted').trim();
+      document.getElementById('rule-value').textContent = computed.getPropertyValue('--rule').trim();
+    }
+
+    // Update on load
+    updateValues();
+
+    // Update when theme changes
+    const observer = new MutationObserver(updateValues);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    // Update when OS preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateValues);
+  </script>
+</body>
+</html>

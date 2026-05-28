@@ -1,0 +1,138 @@
+/* ─────────────────────────────────────────────
+   TOKENS
+   ───────────────────────────────────────────── */
+:root {
+  /* Paper surfaces */
+  --paper:        #FBFAF6;
+  --paper-2:      #F4F2EC;
+  --paper-3:      #ECE9DF;
+
+  /* Ink */
+  --ink:          #1A1814;
+  --ink-2:        #3A362F;
+  --muted:        #807A6F;
+  --muted-2:      #B5AEA0;
+
+  /* Hairlines */
+  --rule:         #E5E0D5;
+  --rule-2:       #D9D3C5;
+
+  /* Amber (one per surface) */
+  --amber:        #F2A03C;
+  --amber-deep:   #C77A1F;
+  --amber-soft:   #FBE6C8;
+
+  /* Status tints */
+  --blue-soft:    #E0EBF1;
+  --blue-ink:     #2E5C73;
+  --blue-edge:    #BCD3DD;
+  --sage-soft:    #E1EBDF;
+  --sage-ink:     #4A6A47;
+  --sage-edge:    #C6D7C2;
+  --clay-soft:    #F2DDD3;
+  --clay-ink:     #A04B26;
+  --clay-edge:    #E8C7B7;
+
+  /* Page / chrome */
+  --page:         #E9E7E1;
+  --popup-border: #DAD3C2;
+
+  /* Type */
+  --font-serif:  'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --font-sans:   'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:   'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Radii */
+  --radius-popup:   14px;
+  --radius-card:    10px;
+  --radius-control: 8px;
+  --radius-chip:    7px;
+  --radius-pill:    999px;
+
+  /* Shadows */
+  --shadow-popup:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 12px 28px -12px rgba(40,30,15,0.18),
+    0 2px 6px -2px rgba(40,30,15,0.10);
+  --shadow-toolbar:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 14px 32px -10px rgba(40,30,15,0.22),
+    0 3px 8px -2px rgba(40,30,15,0.10);
+  --shadow-segmented-active: 0 1px 2px rgba(40,30,15,0.08);
+}
+
+/* ─────────────────────────────────────────────
+   DARK THEME — same system, set by lamplight
+   ───────────────────────────────────────────── */
+
+/* Explicit dark mode via data-theme attribute */
+:root[data-theme="dark"] {
+  --paper:        #1B1814;
+  --paper-2:      #221E18;
+  --paper-3:      #2A251F;
+
+  --ink:          #F0EBDB;
+  --ink-2:        #C9C2AE;
+  --muted:        #8C8576;
+  --muted-2:      #5E5950;
+
+  --rule:         #2C2822;
+  --rule-2:       #383229;
+
+  --amber-soft:   #3D2D14;
+
+  --blue-soft:    #1E3340;  --blue-ink:  #8FBCD0;  --blue-edge:  #2D4859;
+  --sage-soft:    #233326;  --sage-ink:  #A4C49C;  --sage-edge:  #354A38;
+  --clay-soft:    #3A241A;  --clay-ink:  #E0967A;  --clay-edge:  #4E332A;
+
+  --page:         #110F0C;
+  --popup-border: #3B342B;
+
+  /* re-tuned shadows for dark — lift via inner highlight, deeper outer */
+  --shadow-popup:
+    0 1px 0 rgba(255,240,210,0.04) inset,
+    0 12px 30px -12px rgba(0,0,0,0.55),
+    0 2px 6px -2px rgba(0,0,0,0.35);
+  --shadow-toolbar:
+    0 1px 0 rgba(255,240,210,0.05) inset,
+    0 14px 36px -10px rgba(0,0,0,0.65),
+    0 3px 8px -2px rgba(0,0,0,0.4);
+  --shadow-segmented-active: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Auto dark mode via OS preference (unless explicitly set to light) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:        #1B1814;
+    --paper-2:      #221E18;
+    --paper-3:      #2A251F;
+
+    --ink:          #F0EBDB;
+    --ink-2:        #C9C2AE;
+    --muted:        #8C8576;
+    --muted-2:      #5E5950;
+
+    --rule:         #2C2822;
+    --rule-2:       #383229;
+
+    --amber-soft:   #3D2D14;
+
+    --blue-soft:    #1E3340;  --blue-ink:  #8FBCD0;  --blue-edge:  #2D4859;
+    --sage-soft:    #233326;  --sage-ink:  #A4C49C;  --sage-edge:  #354A38;
+    --clay-soft:    #3A241A;  --clay-ink:  #E0967A;  --clay-edge:  #4E332A;
+
+    --page:         #110F0C;
+    --popup-border: #3B342B;
+
+    /* re-tuned shadows for dark — lift via inner highlight, deeper outer */
+    --shadow-popup:
+      0 1px 0 rgba(255,240,210,0.04) inset,
+      0 12px 30px -12px rgba(0,0,0,0.55),
+      0 2px 6px -2px rgba(0,0,0,0.35);
+    --shadow-toolbar:
+      0 1px 0 rgba(255,240,210,0.05) inset,
+      0 14px 36px -10px rgba(0,0,0,0.65),
+      0 3px 8px -2px rgba(0,0,0,0.4);
+    --shadow-segmented-active: 0 1px 2px rgba(0,0,0,0.4);
+  }
+}
