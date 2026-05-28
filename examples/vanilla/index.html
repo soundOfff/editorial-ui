@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editorial UI - Vanilla Examples</title>
+  <link rel="stylesheet" href="../../dist/styles/fonts.css">
+  <link rel="stylesheet" href="../../dist/styles/index.css">
+  <style>
+    body {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .example-section {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .example-section h2 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      margin: 0 0 20px 0;
+      color: var(--ink);
+    }
+    .example-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .example-row:last-child {
+      margin-bottom: 0;
+    }
+    .label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle">
+    <button class="btn btn-quiet btn-sm" onclick="document.documentElement.removeAttribute('data-theme')">Auto</button>
+    <button class="btn btn-quiet btn-sm" onclick="document.documentElement.setAttribute('data-theme', 'light')">Light</button>
+    <button class="btn btn-quiet btn-sm" onclick="document.documentElement.setAttribute('data-theme', 'dark')">Dark</button>
+  </div>
+
+  <div class="example-section">
+    <h2>Button Variants</h2>
+
+    <div class="label">Primary Amber (one per surface)</div>
+    <div class="example-row">
+      <button class="btn btn-amber">Save Quote</button>
+      <button class="btn btn-amber" disabled>Disabled</button>
+    </div>
+
+    <div class="label">Ghost</div>
+    <div class="example-row">
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-ghost" disabled>Disabled</button>
+    </div>
+
+    <div class="label">Quiet</div>
+    <div class="example-row">
+      <button class="btn btn-quiet">Edit</button>
+      <button class="btn btn-quiet" disabled>Disabled</button>
+    </div>
+
+    <div class="label">Danger</div>
+    <div class="example-row">
+      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-danger" disabled>Disabled</button>
+    </div>
+
+    <div class="label">Saved (Success State)</div>
+    <div class="example-row">
+      <button class="btn btn-saved">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Saved
+      </button>
+    </div>
+  </div>
+
+  <div class="example-section">
+    <h2>Button Sizes</h2>
+
+    <div class="example-row">
+      <button class="btn btn-ghost btn-sm">Small</button>
+      <button class="btn btn-ghost">Medium (default)</button>
+      <button class="btn btn-ghost btn-lg">Large</button>
+    </div>
+
+    <div class="example-row">
+      <button class="btn btn-amber btn-sm">Small Amber</button>
+      <button class="btn btn-amber">Medium Amber</button>
+      <button class="btn btn-amber btn-lg">Large Amber</button>
+    </div>
+  </div>
+
+  <div class="example-section">
+    <h2>Icon Buttons</h2>
+
+    <div class="example-row">
+      <button class="btn btn-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+
+      <button class="btn btn-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M12 5v14M5 12h14"></path>
+        </svg>
+      </button>
+
+      <button class="btn btn-icon quiet">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="12" cy="12" r="1"></circle>
+          <circle cx="12" cy="5" r="1"></circle>
+          <circle cx="12" cy="19" r="1"></circle>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="example-section">
+    <h2>Block Button</h2>
+
+    <button class="btn btn-amber btn-block">Full Width Button</button>
+  </div>
+
+  <div class="example-section">
+    <h2>Button Group</h2>
+
+    <div class="btn-group">
+      <button class="btn is-active">Day</button>
+      <button class="btn">Week</button>
+      <button class="btn">Month</button>
+      <button class="btn">Year</button>
+    </div>
+  </div>
+
+  <div class="example-section">
+    <h2>Buttons with Icons</h2>
+
+    <div class="example-row">
+      <button class="btn btn-amber">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Save Quote
+      </button>
+
+      <button class="btn btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download
+      </button>
+
+      <button class="btn btn-quiet">
+        Settings
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 1v6m0 6v6M1 12h6m6 0h6"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</body>
+</html>
