@@ -1,0 +1,17 @@
+/* SEGMENTED CONTROL */
+.segmented-control {
+  display: inline-flex; background: var(--paper-2);
+  border: 1px solid var(--rule-2); border-radius: var(--radius-control);
+  padding: 3px; gap: 2px;
+}
+.seg-item {
+  padding: 6px 12px; font-family: var(--font-sans); font-size: 12.5px; font-weight: 500;
+  color: var(--muted); border-radius: 6px; cursor: pointer;
+  background: none; border: none; transition: color 0.1s, background 0.1s;
+  white-space: nowrap; user-select: none;
+}
+.seg-item:hover { color: var(--ink-2); }
+.seg-item.is-active {
+  background: var(--paper); color: var(--ink); font-weight: 600;
+  box-shadow: 0 1px 2px rgba(40,30,15,0.1);
+}
