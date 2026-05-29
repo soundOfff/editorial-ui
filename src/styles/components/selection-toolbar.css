@@ -1,0 +1,17 @@
+/* SELECTION TOOLBAR */
+.selection-toolbar {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--paper); border: 1px solid var(--rule-2);
+  border-radius: var(--radius-control); padding: 6px 10px;
+  box-shadow: 0 2px 8px rgba(40,30,15,0.12);
+  font-family: var(--font-sans); font-size: 12.5px;
+}
+.sel-lang-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: none; border: none; cursor: pointer;
+  color: var(--ink-2); font-size: 12.5px; font-weight: 500;
+  padding: 3px 6px; border-radius: 5px;
+  transition: background 0.1s, color 0.1s;
+}
+.sel-lang-btn:hover { background: var(--paper-2); color: var(--ink); }
+.sel-sep { width: 1px; height: 16px; background: var(--rule); }
