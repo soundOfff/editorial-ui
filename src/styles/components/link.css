@@ -1,0 +1,9 @@
+/* LINK */
+.link { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; font-family: inherit; }
+.link:hover { color: var(--amber); }
+.link-quiet { color: var(--ink-2); text-decoration: none; }
+.link-quiet:hover { text-decoration: underline; color: var(--ink); }
+.link-amber { color: var(--amber-deep); font-weight: 600; }
+.link-arrow::after { content: ' →'; }
+.link-danger { color: var(--clay-ink); text-decoration: underline; }
+.link-danger:hover { color: var(--clay-edge); }
