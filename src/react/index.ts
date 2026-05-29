@@ -17,3 +17,15 @@ export { Radio } from './primitives/Radio';
 export type { RadioProps } from './primitives/Radio';
 export { Switch } from './primitives/Switch';
 export type { SwitchProps } from './primitives/Switch';
+
+// Controls
+export { Tabs } from './controls/Tabs';
+export type { TabsProps, TabItem } from './controls/Tabs';
+export { SegmentedControl } from './controls/SegmentedControl';
+export type { SegmentedControlProps, SegItem } from './controls/SegmentedControl';
+
+// Navigation
+export { Breadcrumb } from './navigation/Breadcrumb';
+export type { BreadcrumbProps, BreadcrumbItem } from './navigation/Breadcrumb';
+export { Pagination } from './navigation/Pagination';
+export type { PaginationProps } from './navigation/Pagination';

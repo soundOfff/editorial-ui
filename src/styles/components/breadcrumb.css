@@ -1,0 +1,7 @@
+/* BREADCRUMB */
+.breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; font-family: var(--font-sans); font-size: 13px; }
+.breadcrumb-item { color: var(--muted); }
+.breadcrumb-item a, .breadcrumb-item button { color: var(--muted); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; font: inherit; }
+.breadcrumb-item a:hover, .breadcrumb-item button:hover { color: var(--ink-2); text-decoration: underline; }
+.breadcrumb-item.is-current { color: var(--ink-2); font-weight: 500; }
+.breadcrumb-sep { color: var(--muted-2); padding: 0 4px; user-select: none; }

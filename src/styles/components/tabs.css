@@ -1,0 +1,12 @@
+/* TABS */
+.tabs { display: flex; border-bottom: 1px solid var(--rule); gap: 0; }
+.tab-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 14px; font-family: var(--font-sans);
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  cursor: pointer; background: none; border-top: none; border-left: none; border-right: none;
+  transition: color 0.12s, border-color 0.12s; white-space: nowrap; user-select: none;
+}
+.tab-item:hover { color: var(--ink-2); }
+.tab-item.is-active { color: var(--ink); border-bottom-color: var(--amber); font-weight: 600; }
