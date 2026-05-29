@@ -1,3 +1,28 @@
 // Editorial UI Icons
-// Icons will be exported here as they are created
-export {};
+export { ArrowRight } from './ArrowRight';
+export { Auto } from './Auto';
+export { Bell } from './Bell';
+export { Bookmark } from './Bookmark';
+export { Check } from './Check';
+export { ChevronDown } from './ChevronDown';
+export { ChevronLeft } from './ChevronLeft';
+export { ChevronRight } from './ChevronRight';
+export { Copy } from './Copy';
+export { Download } from './Download';
+export { Edit } from './Edit';
+export { Flame } from './Flame';
+export { Folder } from './Folder';
+export { Globe } from './Globe';
+export { Info } from './Info';
+export { Minus } from './Minus';
+export { Moon } from './Moon';
+export { Play } from './Play';
+export { Plus } from './Plus';
+export { Search } from './Search';
+export { Settings } from './Settings';
+export { Sun } from './Sun';
+export { Tag } from './Tag';
+export { Target } from './Target';
+export { Trash } from './Trash';
+export { Warn } from './Warn';
+export { X } from './X';
