@@ -1,0 +1,11 @@
+/* DOT */
+.dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--muted-2);
+}
+.dot-info    { background: var(--blue-ink); }
+.dot-success { background: var(--sage-ink); }
+.dot-warn    { background: var(--amber-deep); }
+.dot-danger  { background: var(--clay-ink); }
+.dot-sm { width: 6px; height: 6px; }
+.dot-lg { width: 10px; height: 10px; }
