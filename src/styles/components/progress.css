@@ -1,0 +1,30 @@
+/* PROGRESS */
+.progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--paper-3);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--amber);
+  transition: width 0.3s ease;
+}
+
+.progress-fill.is-success { background: var(--sage-ink); }
+.progress-fill.is-info    { background: var(--blue-ink); }
+.progress-fill.is-danger  { background: var(--clay-ink); }
+
+/* Indeterminate */
+.progress-fill.is-indeterminate {
+  width: 40% !important;
+  animation: progress-slide 1.4s ease-in-out infinite;
+}
+
+@keyframes progress-slide {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(350%); }
+}
