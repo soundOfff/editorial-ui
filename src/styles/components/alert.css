@@ -1,0 +1,15 @@
+/* ALERT */
+.alert {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 11px 13px; border-radius: var(--radius-control);
+  font-family: var(--font-sans); font-size: 13px; line-height: 1.5;
+  border: 1px solid var(--rule);
+  background: var(--paper-2); color: var(--ink-2);
+}
+.alert.is-info    { background: var(--blue-soft);  color: var(--blue-ink);  border-color: var(--blue-edge); }
+.alert.is-success { background: var(--sage-soft);  color: var(--sage-ink);  border-color: var(--sage-edge); }
+.alert.is-warn    { background: var(--amber-soft); color: var(--amber-deep); border-color: #F0CC90; }
+.alert.is-danger  { background: var(--clay-soft);  color: var(--clay-ink);  border-color: var(--clay-edge); }
+.alert.is-compact { padding: 7px 10px; font-size: 12px; }
+.alert-icon { flex-shrink: 0; margin-top: 1px; }
+.alert-message { flex: 1; }
