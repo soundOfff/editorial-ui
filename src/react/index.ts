@@ -17,3 +17,9 @@ export { Radio } from './primitives/Radio';
 export type { RadioProps } from './primitives/Radio';
 export { Switch } from './primitives/Switch';
 export type { SwitchProps } from './primitives/Switch';
+
+// Theme
+export { ThemeProvider } from './theme/ThemeProvider';
+export type { ThemeProviderProps } from './theme/ThemeProvider';
+export { accentPresets } from './theme/presets';
+export type { AccentPresetName, AccentTuple } from './theme/presets';
