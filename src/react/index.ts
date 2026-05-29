@@ -17,3 +17,15 @@ export { Radio } from './primitives/Radio';
 export type { RadioProps } from './primitives/Radio';
 export { Switch } from './primitives/Switch';
 export type { SwitchProps } from './primitives/Switch';
+
+// Data Display
+export { Badge } from './data-display/Badge';
+export type { BadgeProps } from './data-display/Badge';
+export { Chip } from './data-display/Chip';
+export type { ChipProps } from './data-display/Chip';
+export { Dot } from './data-display/Dot';
+export type { DotProps } from './data-display/Dot';
+export { Kbd } from './data-display/Kbd';
+export type { KbdProps } from './data-display/Kbd';
+export { Avatar } from './data-display/Avatar';
+export type { AvatarProps } from './data-display/Avatar';

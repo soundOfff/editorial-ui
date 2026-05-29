@@ -1,0 +1,9 @@
+/* KBD */
+.kbd {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono); font-size: 11px;
+  padding: 2px 5px; border-radius: 5px;
+  background: var(--paper-2); color: var(--ink-2);
+  border: 1px solid var(--rule-2);
+  box-shadow: 0 1px 0 var(--rule-2);
+}
