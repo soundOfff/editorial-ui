@@ -17,3 +17,10 @@ export { Radio } from './primitives/Radio';
 export type { RadioProps } from './primitives/Radio';
 export { Switch } from './primitives/Switch';
 export type { SwitchProps } from './primitives/Switch';
+
+// Data Display
+export { Card } from './data-display/Card';
+export type { CardProps } from './data-display/Card';
+export { Table } from './data-display/Table';
+export { Progress } from './data-display/Progress';
+export type { ProgressProps } from './data-display/Progress';
