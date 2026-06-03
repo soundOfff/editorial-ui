@@ -12,13 +12,16 @@ export default defineConfig({
   },
   format: ['esm'],
   dts: true,
-  sourcemap: true,
+  sourcemap: false,
   clean: true,
   splitting: false,
   treeshake: true,
-  // CSS is passed through without processing
+  // CSS is passed through without processing.
   loader: {
     '.css': 'copy',
   },
+  // The copy loader does NOT inline @imports, so styles/index.css ships as bare
+  // @import lines. Flatten it into one self-contained bundle after the build.
+  onSuccess: 'node scripts/build-css.mjs',
   external: ['react', 'react-dom'],
 });
