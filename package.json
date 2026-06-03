@@ -34,7 +34,8 @@
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "keywords": [
     "react",
@@ -50,12 +51,18 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/soundOfff/editorial-ui.git"
+    "url": "git+https://github.com/soundOfff/editorial-ui.git"
   },
   "bugs": {
     "url": "https://github.com/soundOfff/editorial-ui/issues"
   },
   "homepage": "https://github.com/soundOfff/editorial-ui#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
