@@ -1,0 +1,53 @@
+name: Deploy showcase
+
+# Builds the vanilla showcase (examples/vanilla/_verify.html) into a self-contained
+# static site and publishes it to GitHub Pages on every merge to main. The shown
+# version is synced from package.json by scripts/build-site.mjs, so the landing
+# page always matches whatever the library is at on main.
+#
+# One-time setup: repo Settings -> Pages -> Source: "GitHub Actions".
+# (`configure-pages` below also attempts to enable it automatically.)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deploy at a time; let a newer run supersede an in-flight one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - name: Build site (library + showcase, version synced)
+        run: npm run build:site
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

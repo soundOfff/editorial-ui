@@ -1,4 +1,11 @@
 /* ─────────────────────────────────────────────
    TEXTAREA
    ───────────────────────────────────────────── */
-.textarea { min-height: 84px; resize: vertical; line-height: 1.5; }
+.textarea { min-height: 84px; max-height: 50vh; resize: vertical; line-height: 1.5; }
+
+/* Grow to fit content where supported (Chromium 123+); min-height is the floor and
+   max-height the ceiling. Older browsers fall back to the floor + rows + manual
+   vertical resize, so nothing regresses. */
+@supports (field-sizing: content) {
+  .textarea { field-sizing: content; }
+}

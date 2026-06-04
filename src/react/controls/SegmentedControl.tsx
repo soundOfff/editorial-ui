@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useCallback } from 'react';
 
 export interface SegItem { id: string; label: React.ReactNode; }

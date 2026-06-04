@@ -55,16 +55,18 @@
 }
 .btn-quiet:hover { background: var(--paper-2); color: var(--ink); }
 
-/* Destructive ghost */
+/* Destructive — filled. The hero "delete/confirm" action of a surface, the
+   red counterpart to .btn-amber. For a lighter inline destructive, use .btn-ghost. */
 .btn-danger {
-  background: var(--paper);
-  color: var(--clay-ink);
-  border-color: var(--clay-edge);
-  font-weight: 500;
-  font-size: 12.5px;
-  padding: 8px 11px;
+  background: #B5391C;
+  color: #FCF3EE;
+  border-color: #8F2C14;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.12) inset,
+    0 1px 2px rgba(40,20,10,0.18);
 }
-.btn-danger:hover { background: #F7E7DE; }
+.btn-danger:hover { filter: brightness(1.06); }
+.btn-danger:active { filter: brightness(0.96); }
 
 /* Sage success pill */
 .btn-saved {

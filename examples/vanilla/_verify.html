@@ -14,8 +14,8 @@
 
 <!-- ░░ The deployed library ░░ — fonts + every component style, pinned to a published version.
      This is the only thing the page needs to render the components below. -->
-<link rel="stylesheet" href="https://unpkg.com/editorial-ui@0.1.0/dist/styles/fonts.css" />
-<link rel="stylesheet" href="https://unpkg.com/editorial-ui@0.1.0/dist/styles/index.css" />
+<link rel="stylesheet" href="../../dist/styles/fonts.css" />
+<link rel="stylesheet" href="../../dist/styles/index.css" />
 
 <!-- ░░ Page scaffolding ░░ — NOT part of editorial-ui. This is only the documentation
      page's own chrome: the rail, the header, the section frames, and a few demo surfaces.
@@ -27,7 +27,7 @@
   main { background:var(--paper); border:1px solid var(--popup-border); border-radius:var(--radius-popup); box-shadow:var(--shadow-popup); overflow:hidden; }
 
   /* Left rail */
-  .rail { position:sticky; top:32px; align-self:start; height:calc(100vh - 64px); overflow-y:auto; padding-right:8px; scrollbar-width:thin; scrollbar-color:var(--rule-2) transparent; }
+  .rail { position:sticky; top:32px; align-self:start; height:calc(100vh - 64px); overflow-y:auto; padding-left:12px; padding-right:8px; scrollbar-width:thin; scrollbar-color:var(--rule-2) transparent; }
   .rail::-webkit-scrollbar { width:6px; }
   .rail::-webkit-scrollbar-track { background:transparent; }
   .rail::-webkit-scrollbar-thumb { background:var(--rule-2); border-radius:999px; }
@@ -49,12 +49,30 @@
   .page-head .meta b { color:var(--ink); font-weight:500; }
 
   /* Sections ("bays") */
-  section.bay { padding:32px 40px 36px; border-bottom:1px solid var(--rule); }
+  section.bay { padding:32px 40px 36px; border-bottom:1px solid var(--rule); scroll-margin-top:24px; }
   section.bay:last-of-type { border-bottom:0; }
   .bay-head { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
   .bay-head .num { font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted-2); }
   .bay-head h2 { font-family:var(--font-serif); font-size:22px; font-weight:600; letter-spacing:-0.01em; margin:0; }
   .bay-head .lede { margin-left:auto; font-size:12px; color:var(--muted); max-width:40ch; text-align:right; }
+
+  /* Page footer — author + links (page chrome, not a library component) */
+  .page-foot { padding:28px 40px 30px; border-top:1px solid var(--rule); background:var(--paper-2); display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px 24px; }
+  .page-foot .foot-brand { display:flex; flex-direction:column; gap:3px; }
+  .page-foot .foot-word { font-family:var(--font-serif); font-size:16px; font-weight:600; letter-spacing:-0.01em; }
+  .page-foot .foot-word em { font-style:normal; color:var(--amber-deep); }
+  .page-foot .foot-by { font-size:12px; color:var(--muted); }
+  .page-foot .foot-by b { color:var(--ink-2); font-weight:600; }
+  .page-foot .foot-links { display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+  .page-foot .foot-links a { display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:var(--ink-2); text-decoration:none; padding:6px 10px; border:1px solid var(--rule-2); border-radius:8px; background:var(--paper); transition:background .12s, color .12s, border-color .12s; }
+  .page-foot .foot-links a:hover { background:var(--paper-2); color:var(--ink); border-color:#C7C0AF; }
+  .page-foot .foot-links a svg { color:var(--muted); }
+  .page-foot .foot-links a:hover svg { color:var(--amber-deep); }
+  .page-foot .foot-meta { grid-column:1 / -1; border-top:1px solid var(--rule); padding-top:16px; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted-2); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  @media (max-width:880px){
+    .page-foot { grid-template-columns:1fr; }
+    .page-foot .foot-links { justify-content:flex-start; }
+  }
 
   /* Demo framing */
   .label { font-family:var(--font-mono); font-size:10.5px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
@@ -90,6 +108,9 @@
 
   /* Alert trailing action slot (the library Alert is a flex row; this pins content right) */
   .alert .alert-actions { margin-left:auto; display:flex; align-items:center; white-space:nowrap; }
+  /* Keep the alert's action link in the alert's own tone — amber is the surface's hero action, not a footnote */
+  .alert.is-info .alert-actions .link { color:var(--blue-ink); }
+  .alert.is-info .alert-actions .link:hover { color:var(--ink); }
 
   /* Table demo frame + cell helpers (the library Table is intentionally element-styled) */
   .table-wrap { background:var(--paper); border:1px solid var(--rule); border-radius:var(--radius-card); overflow:hidden; }
@@ -112,7 +133,6 @@
   /* Dark-mode lamp — page affordance, not a library component */
   .lamp { position:fixed; top:0; right:48px; z-index:70; display:flex; flex-direction:column; align-items:center; padding:0 10px 10px; border:0; background:none; cursor:pointer; -webkit-tap-highlight-color:transparent; }
   .lamp-cord { width:2px; height:56px; background:var(--rule-2); border-radius:0 0 2px 2px; transition:height .16s cubic-bezier(.34,1.56,.5,1); }
-  .lamp-knot { width:6px; height:6px; border-radius:999px; background:var(--muted-2); margin-top:-1px; }
   .lamp-pull { display:grid; place-items:center; width:30px; height:30px; margin-top:2px; border-radius:9px; background:var(--paper); border:1px solid var(--popup-border); box-shadow:var(--shadow-toolbar); color:var(--amber-deep); transition:transform .16s cubic-bezier(.34,1.56,.5,1), color .22s, background .22s; }
   .lamp:hover .lamp-cord { height:60px; }
   .lamp:hover .lamp-pull { background:var(--paper-2); }
@@ -140,7 +160,6 @@
 <!-- Dark-mode lamp — pull the cord to switch the light on/off -->
 <button class="lamp" id="lamp-toggle" type="button" aria-label="Toggle dark mode" title="Pull the cord">
   <span class="lamp-cord"></span>
-  <span class="lamp-knot"></span>
   <span class="lamp-pull">
     <svg class="ic-sun"  width="14" height="14" aria-hidden="true"><use href="#i-sun"/></svg>
     <svg class="ic-moon" width="14" height="14" aria-hidden="true"><use href="#i-moon"/></svg>
@@ -177,6 +196,8 @@
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v18M12 3a9 9 0 0 1 0 18" fill="currentColor" opacity="0.18"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.69-.22.69-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.49-1.11-1.49-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 2.5-.34c.85 0 1.71.12 2.5.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.48A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
@@ -227,7 +248,7 @@
       </div>
       <div class="meta">
         <div>v <b>0.1.0</b></div>
-        <div><b>23</b> components</div>
+        <div><b>24</b> components</div>
         <div>May <b>28</b> · 2026</div>
       </div>
     </header>
@@ -436,7 +457,7 @@
       <div class="bay-head">
         <span class="num">06</span>
         <h2>Selects</h2>
-        <span class="lede">Native select for short lists; a static popover sketch for long ones with filtering.</span>
+        <span class="lede">Native <code>select</code> for short lists; the custom <code>SelectMenu</code> listbox for long or richly-labelled ones, with optional filtering.</span>
       </div>
 
       <div class="spec-grid cols-2">
@@ -462,35 +483,56 @@
           </div>
         </div>
 
-        <!-- Popover-style language menu (static sketch, composed from tokens) -->
-        <div class="spec center" style="background:var(--paper-3);">
-          <div style="width:220px; background:var(--paper); border:1px solid var(--popup-border); border-radius:10px; padding:6px; box-shadow:var(--shadow-toolbar);">
-            <div class="mono" style="padding:4px 8px 6px;">Translate to</div>
-            <div class="input-search" style="margin:0 4px 6px;">
-              <svg width="12" height="12"><use href="#i-search"/></svg>
-              <input class="input" placeholder="Filter…" style="font-size:11.5px; padding:6px 8px 6px 28px;" />
+        <!-- Custom SelectMenu — the listbox component, shown at rest and open.
+             The popover is position:absolute in the library; here it's forced
+             static so the static page can show the open state inline. -->
+        <div class="spec col" style="background:var(--paper-3); gap:18px;">
+          <div class="field">
+            <label class="field-label">SelectMenu · at rest</label>
+            <div class="select-menu" style="width:220px;">
+              <button class="select-menu-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="select-menu-value">Spanish</span>
+                <svg class="select-menu-chevron" width="16" height="16" aria-hidden="true"><use href="#i-chev-d"/></svg>
+              </button>
             </div>
-            <div style="display:flex; flex-direction:column; gap:2px;">
-              <button style="display:flex; align-items:center; justify-content:space-between; padding:6px 10px; border-radius:6px; background:var(--amber-soft); font-weight:600; font-size:12px;">
-                <span style="display:inline-flex; align-items:center; gap:8px;"><svg width="11" height="11" style="color:var(--amber-deep)"><use href="#i-check"/></svg> Spanish</span>
-                <span class="iso">ES</span>
+          </div>
+
+          <div class="field">
+            <label class="field-label">SelectMenu · open <span class="opt">filterable</span></label>
+            <div class="select-menu" style="width:220px;">
+              <button class="select-menu-trigger is-open" type="button" aria-haspopup="listbox" aria-expanded="true">
+                <span class="select-menu-value">Spanish</span>
+                <svg class="select-menu-chevron" width="16" height="16" aria-hidden="true"><use href="#i-chev-d"/></svg>
               </button>
-              <button style="display:flex; align-items:center; justify-content:space-between; padding:6px 10px; border-radius:6px; font-weight:500; font-size:12px; color:var(--ink-2);">
-                <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:11px"></span> Portuguese</span>
-                <span class="iso">PT</span>
-              </button>
-              <button style="display:flex; align-items:center; justify-content:space-between; padding:6px 10px; border-radius:6px; font-weight:500; font-size:12px; color:var(--ink-2);">
-                <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:11px"></span> French</span>
-                <span class="iso">FR</span>
-              </button>
-              <button style="display:flex; align-items:center; justify-content:space-between; padding:6px 10px; border-radius:6px; font-weight:500; font-size:12px; color:var(--ink-2);">
-                <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:11px"></span> German</span>
-                <span class="iso">DE</span>
-              </button>
-              <button style="display:flex; align-items:center; justify-content:space-between; padding:6px 10px; border-radius:6px; font-weight:500; font-size:12px; color:var(--ink-2);">
-                <span style="display:inline-flex; align-items:center; gap:8px;"><span style="width:11px"></span> Japanese</span>
-                <span class="iso">JA</span>
-              </button>
+              <div class="select-menu-popover" style="position:static; margin-top:6px;">
+                <div class="select-menu-heading">Translate to</div>
+                <div class="input-search select-menu-search">
+                  <svg width="13" height="13" aria-hidden="true"><use href="#i-search"/></svg>
+                  <input class="input" placeholder="Filter…" />
+                </div>
+                <div class="select-menu-list" role="listbox" aria-label="Translate to">
+                  <div class="select-menu-option is-selected" role="option" aria-selected="true">
+                    <span class="select-menu-option-main"><svg class="select-menu-check" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg><span>Spanish</span></span>
+                    <span class="select-menu-suffix">ES</span>
+                  </div>
+                  <div class="select-menu-option is-highlighted" role="option" aria-selected="false">
+                    <span class="select-menu-option-main"><svg class="select-menu-check" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg><span>Portuguese</span></span>
+                    <span class="select-menu-suffix">PT</span>
+                  </div>
+                  <div class="select-menu-option" role="option" aria-selected="false">
+                    <span class="select-menu-option-main"><svg class="select-menu-check" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg><span>French</span></span>
+                    <span class="select-menu-suffix">FR</span>
+                  </div>
+                  <div class="select-menu-option" role="option" aria-selected="false">
+                    <span class="select-menu-option-main"><svg class="select-menu-check" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg><span>German</span></span>
+                    <span class="select-menu-suffix">DE</span>
+                  </div>
+                  <div class="select-menu-option" role="option" aria-selected="false">
+                    <span class="select-menu-option-main"><svg class="select-menu-check" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg><span>Japanese</span></span>
+                    <span class="select-menu-suffix">JA</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -746,7 +788,7 @@
         <div class="card-stat">
           <span class="card-stat-label">Day streak</span>
           <span class="card-stat-value">14 <span style="font-size:14px; color:var(--muted); font-weight:400;">days</span></span>
-          <span style="font-size:11.5px; color:var(--muted);"><svg width="11" height="11" style="vertical-align:-2px; color:var(--amber-deep)"><use href="#i-flame"/></svg> Longest this month</span>
+          <span style="font-size:11.5px; color:var(--muted);"><svg width="24" height="24" style="vertical-align:-2px; color:var(--amber-deep)"><use href="#i-flame"/></svg> Longest this month</span>
         </div>
       </div>
     </section>
@@ -1020,23 +1062,332 @@
       </div>
     </section>
 
+    <!-- FOOTER -->
+    <footer class="page-foot">
+      <div class="foot-brand">
+        <div class="foot-word">Editorial<em>UI</em></div>
+        <div class="foot-by">Designed &amp; built by <b>Tomás Brasca</b></div>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="https://github.com/soundOfff" target="_blank" rel="noopener">
+          <svg width="15" height="15" aria-hidden="true"><use href="#i-github"/></svg> GitHub
+        </a>
+        <a href="https://github.com/soundOfff/editorial-ui" target="_blank" rel="noopener">
+          <svg width="15" height="15" aria-hidden="true"><use href="#i-bookmark"/></svg> Repository
+        </a>
+        <a href="mailto:tomibrasca97@gmail.com">
+          <svg width="15" height="15" aria-hidden="true"><use href="#i-mail"/></svg> Email
+        </a>
+      </nav>
+      <div class="foot-meta">
+        <span>© 2026 Tomás Brasca · MIT License</span>
+        <span>Editorial UI · v0.1.0</span>
+      </div>
+    </footer>
+
   </main>
 </div>
 
 <script>
-  // Highlight current section in the left rail as it scrolls into view
+  // Highlight the current section in the left rail, and keep the active link
+  // scrolled into view *within the rail* so the rail's own scroll and the page
+  // scroll stay in sync (one feels like the other). Detection is scroll-based —
+  // the active section is the last one whose top has crossed a line near the
+  // top of the viewport — which lands exactly where an anchor-click jumps to,
+  // so clicking a short section no longer lights up the link below it.
   (function () {
-    var links = document.querySelectorAll('.rail nav a');
-    var sections = [].map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
-    if (!('IntersectionObserver' in window) || !sections.length) return;
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + e.target.id); });
+    var rail = document.querySelector('.rail');
+    var links = [].slice.call(document.querySelectorAll('.rail nav a'));
+    var sections = links
+      .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    var linkFor = {};
+    links.forEach(function (a) { linkFor[a.getAttribute('href').slice(1)] = a; });
+
+    var THRESHOLD = 100; // px below the viewport top where a section becomes "current"
+    var activeId = null;
+
+    function keepInRailView(link) {
+      if (!rail) return;
+      var lr = link.getBoundingClientRect();
+      var rr = rail.getBoundingClientRect();
+      if (lr.top < rr.top + 8) {
+        rail.scrollTop -= (rr.top + 8 - lr.top);
+      } else if (lr.bottom > rr.bottom - 8) {
+        rail.scrollTop += (lr.bottom - (rr.bottom - 8));
+      }
+    }
+
+    function setActive(id) {
+      if (id === activeId) return;
+      activeId = id;
+      links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + id); });
+      if (linkFor[id]) keepInRailView(linkFor[id]);
+    }
+
+    function currentSection() {
+      // At the very bottom of the page the last section can't reach the line —
+      // pin it active so the final entry isn't left unselected.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        return sections[sections.length - 1];
+      }
+      var current = sections[0];
+      sections.forEach(function (s) {
+        if (s.getBoundingClientRect().top <= THRESHOLD) current = s;
+      });
+      return current;
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var s = currentSection();
+        if (s) setActive(s.id);
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+
+  // Progressively enhance every native <select class="select"> into the
+  // library's SelectMenu listbox, so options open in an in-page panel *below*
+  // the trigger — like the React SelectMenu / focus-quote Dropdown — instead of
+  // deferring to the macOS pop-up menu that overlays the control. The native
+  // <select> stays in the DOM (hidden) as the source of truth and is kept in
+  // sync, so it still works for forms and assistive tech that prefer it.
+  (function () {
+    var CHEVRON = '<svg class="select-menu-chevron" width="16" height="16" aria-hidden="true"><use href="#i-chev-d"/></svg>';
+    var CHECK = '<svg class="select-menu-check" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg>';
+
+    function enhance(select) {
+      var field = select.closest('.field');
+      var labelEl = field && field.querySelector('.field-label');
+      var ariaLabel = labelEl
+        ? labelEl.textContent.trim()
+        : (select.getAttribute('aria-label') || 'Select');
+
+      var opts = [].map.call(select.options, function (o) {
+        return { value: o.value || o.textContent, label: o.textContent };
+      });
+
+      var value = select.value || (opts[0] && opts[0].value) || '';
+      var open = false;
+      var highlight = -1;
+      var popover = null;
+      var listEl = null;
+      var typeBuffer = '';
+      var typeTimer = null;
+
+      // Build the trigger; hide the native control but keep it synced.
+      var root = document.createElement('div');
+      root.className = 'select-menu';
+      root.style.width = '100%';
+
+      var trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'select-menu-trigger';
+      trigger.setAttribute('aria-haspopup', 'listbox');
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.setAttribute('aria-label', ariaLabel);
+      var valueSpan = document.createElement('span');
+      valueSpan.className = 'select-menu-value';
+      trigger.appendChild(valueSpan);
+      trigger.insertAdjacentHTML('beforeend', CHEVRON);
+      root.appendChild(trigger);
+
+      select.style.display = 'none';
+      select.setAttribute('tabindex', '-1');
+      select.setAttribute('aria-hidden', 'true');
+      select.parentNode.insertBefore(root, select.nextSibling);
+
+      function indexOfValue() {
+        for (var i = 0; i < opts.length; i++) if (opts[i].value === value) return i;
+        return -1;
+      }
+
+      function renderValue() {
+        var i = indexOfValue();
+        valueSpan.textContent = i >= 0 ? opts[i].label : '';
+      }
+      renderValue();
+
+      function setHighlight(i) {
+        highlight = i;
+        if (!listEl) return;
+        var nodes = listEl.children;
+        for (var n = 0; n < nodes.length; n++) {
+          nodes[n].classList.toggle('is-highlighted', n === i);
+        }
+        if (i >= 0 && nodes[i]) {
+          trigger.setAttribute('aria-activedescendant', nodes[i].id);
+          nodes[i].scrollIntoView({ block: 'nearest' });
+        }
+      }
+
+      // Place below by default; flip above only when below is cramped and
+      // above has more room (mirrors the Dropdown's viewport-flip).
+      function positionPopover() {
+        if (!popover) return;
+        popover.style.top = '';
+        popover.style.bottom = '';
+        var r = trigger.getBoundingClientRect();
+        var h = popover.offsetHeight;
+        var spaceBelow = window.innerHeight - r.bottom - 6 - 8;
+        var spaceAbove = r.top - 6 - 8;
+        if (h > spaceBelow && spaceAbove > spaceBelow) {
+          popover.style.top = 'auto';
+          popover.style.bottom = 'calc(100% + 6px)';
+        }
+      }
+
+      var reflowRaf = 0;
+      function onReflow() {
+        cancelAnimationFrame(reflowRaf);
+        reflowRaf = requestAnimationFrame(positionPopover);
+      }
+
+      function onOutside(e) {
+        if (!root.contains(e.target)) closeMenu(false);
+      }
+
+      function buildPopover() {
+        popover = document.createElement('div');
+        popover.className = 'select-menu-popover';
+        listEl = document.createElement('div');
+        listEl.className = 'select-menu-list';
+        listEl.setAttribute('role', 'listbox');
+        listEl.setAttribute('aria-label', ariaLabel);
+        listEl.tabIndex = -1;
+
+        opts.forEach(function (o, i) {
+          var od = document.createElement('div');
+          od.className = 'select-menu-option';
+          od.id = (select.id || ariaLabel.replace(/\s+/g, '-').toLowerCase()) + '-opt-' + i;
+          od.setAttribute('role', 'option');
+          var isSel = o.value === value;
+          od.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          if (isSel) od.classList.add('is-selected');
+          var main = document.createElement('span');
+          main.className = 'select-menu-option-main';
+          main.insertAdjacentHTML('beforeend', CHECK);
+          var lbl = document.createElement('span');
+          lbl.textContent = o.label;
+          main.appendChild(lbl);
+          od.appendChild(main);
+          od.addEventListener('click', function () { commit(i); });
+          od.addEventListener('mousemove', function () { if (i !== highlight) setHighlight(i); });
+          listEl.appendChild(od);
+        });
+
+        popover.appendChild(listEl);
+        listEl.addEventListener('keydown', onListKeyDown);
+        root.appendChild(popover);
+      }
+
+      function openMenu() {
+        if (open) return;
+        open = true;
+        trigger.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        buildPopover();
+        positionPopover();
+        var i = indexOfValue();
+        setHighlight(i >= 0 ? i : 0);
+        listEl.focus();
+        document.addEventListener('pointerdown', onOutside, true);
+        window.addEventListener('resize', onReflow);
+        window.addEventListener('scroll', onReflow, true);
+      }
+
+      function closeMenu(focusTrigger) {
+        if (!open) return;
+        open = false;
+        trigger.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.removeAttribute('aria-activedescendant');
+        if (popover) { popover.remove(); popover = null; listEl = null; }
+        document.removeEventListener('pointerdown', onOutside, true);
+        window.removeEventListener('resize', onReflow);
+        window.removeEventListener('scroll', onReflow, true);
+        cancelAnimationFrame(reflowRaf);
+        if (focusTrigger !== false) trigger.focus();
+      }
+
+      function commit(i) {
+        var o = opts[i];
+        if (!o) return;
+        value = o.value;
+        if (select.value !== value) {
+          select.value = value;
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        renderValue();
+        closeMenu();
+      }
+
+      function typeahead(char) {
+        if (typeTimer) clearTimeout(typeTimer);
+        typeBuffer += char.toLowerCase();
+        var buf = typeBuffer;
+        for (var i = 0; i < opts.length; i++) {
+          if (opts[i].label.toLowerCase().indexOf(buf) === 0) { setHighlight(i); break; }
+        }
+        typeTimer = setTimeout(function () { typeBuffer = ''; }, 500);
+      }
+
+      function onListKeyDown(e) {
+        switch (e.key) {
+          case 'ArrowDown':
+            e.preventDefault();
+            setHighlight(Math.min(opts.length - 1, highlight + 1));
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            setHighlight(Math.max(0, highlight - 1));
+            break;
+          case 'Home':
+            e.preventDefault();
+            setHighlight(0);
+            break;
+          case 'End':
+            e.preventDefault();
+            setHighlight(opts.length - 1);
+            break;
+          case 'Enter':
+          case ' ':
+            e.preventDefault();
+            if (highlight >= 0) commit(highlight);
+            break;
+          case 'Escape':
+            e.preventDefault();
+            closeMenu();
+            break;
+          case 'Tab':
+            closeMenu(false);
+            break;
+          default:
+            if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) typeahead(e.key);
+        }
+      }
+
+      trigger.addEventListener('click', function () { open ? closeMenu() : openMenu(); });
+      trigger.addEventListener('keydown', function (e) {
+        if (open) return;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openMenu();
         }
       });
-    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-    sections.forEach(function (s) { io.observe(s); });
+    }
+
+    [].forEach.call(document.querySelectorAll('select.select'), enhance);
   })();
 
   // Dark-mode lamp — pull the cord to flip light/dark (persisted)

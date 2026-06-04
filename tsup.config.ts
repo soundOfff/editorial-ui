@@ -22,6 +22,6 @@ export default defineConfig({
   },
   // The copy loader does NOT inline @imports, so styles/index.css ships as bare
   // @import lines. Flatten it into one self-contained bundle after the build.
-  onSuccess: 'node scripts/build-css.mjs',
+  onSuccess: 'node scripts/build-css.mjs && node scripts/add-use-client.mjs',
   external: ['react', 'react-dom'],
 });

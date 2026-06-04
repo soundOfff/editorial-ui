@@ -1,0 +1,84 @@
+/* ─────────────────────────────────────────────
+   SELECT MENU — custom listbox / dropdown
+   A styled alternative to the native .select for long or richly-labelled
+   lists with optional filtering. The trigger mirrors the .input chrome; the
+   popover reuses the popup shell and tokens, so dark mode comes for free.
+   ───────────────────────────────────────────── */
+.select-menu { position: relative; display: inline-flex; flex-direction: column; }
+
+/* Trigger — looks like an input, with a chevron that flips when open */
+.select-menu-trigger {
+  display: inline-flex; align-items: center; gap: 8px;
+  width: 100%; min-width: 0;
+  font-family: var(--font-sans); font-size: 13px; color: var(--ink);
+  background: var(--paper); border: 1px solid var(--rule-2);
+  border-radius: var(--radius-control); padding: 8px 10px 8px 12px;
+  cursor: pointer; text-align: left;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.select-menu-trigger:hover { border-color: #C7C0AF; }
+.select-menu-trigger:focus-visible,
+.select-menu-trigger.is-open {
+  outline: none; border-color: var(--amber-deep);
+  box-shadow: 0 0 0 3px rgba(242, 160, 60, 0.18);
+}
+.select-menu-trigger.is-error { border-color: var(--clay-ink); }
+.select-menu-trigger:disabled { background: var(--paper-2); color: var(--muted-2); cursor: not-allowed; }
+
+.select-menu-value { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select-menu-trigger.is-placeholder .select-menu-value { color: var(--muted-2); }
+
+.select-menu-chevron { flex-shrink: 0; color: var(--muted-2); transition: transform 0.15s ease, color 0.12s; }
+.select-menu-trigger.is-open .select-menu-chevron { transform: rotate(180deg); color: var(--muted); }
+
+/* Popover panel — the popup shell */
+.select-menu-popover {
+  position: absolute; top: calc(100% + 6px); left: 0; z-index: 60;
+  min-width: 100%; box-sizing: border-box;
+  background: var(--paper); border: 1px solid var(--popup-border);
+  border-radius: 10px; padding: 6px; box-shadow: var(--shadow-toolbar);
+  animation: select-menu-in 0.14s cubic-bezier(0.34, 1.2, 0.5, 1) both;
+}
+.select-menu-popover.to-end { left: auto; right: 0; }
+@media (prefers-reduced-motion: reduce) { .select-menu-popover { animation-duration: 0.01ms; } }
+@keyframes select-menu-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+.select-menu-heading {
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  padding: 4px 8px 6px;
+}
+
+/* Search field inside the popover — leans on .input-search */
+.select-menu-search { margin: 0 4px 6px; }
+.select-menu-search > input { font-size: 11.5px; padding-top: 6px; padding-bottom: 6px; }
+
+.select-menu-list {
+  display: flex; flex-direction: column; gap: 2px;
+  max-height: 240px; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--rule-2) transparent;
+}
+.select-menu-list:focus { outline: none; }
+.select-menu-list::-webkit-scrollbar { width: 6px; }
+.select-menu-list::-webkit-scrollbar-track { background: transparent; }
+.select-menu-list::-webkit-scrollbar-thumb { background: var(--rule-2); border-radius: 999px; }
+
+.select-menu-option {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  width: 100%; padding: 6px 10px; border-radius: 6px;
+  font-family: var(--font-sans); font-size: 12.5px; font-weight: 500;
+  color: var(--ink-2); cursor: pointer; text-align: left;
+  background: none; border: none;
+  transition: background 0.1s, color 0.1s;
+}
+.select-menu-option-main { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.select-menu-option-main > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.select-menu-check { width: 13px; height: 13px; flex-shrink: 0; color: var(--amber-deep); opacity: 0; }
+.select-menu-option:hover,
+.select-menu-option.is-highlighted { background: var(--paper-2); color: var(--ink); }
+.select-menu-option.is-selected { background: var(--amber-soft); color: var(--ink); font-weight: 600; }
+.select-menu-option.is-selected .select-menu-check { opacity: 1; }
+.select-menu-option[aria-disabled="true"] { opacity: 0.45; cursor: not-allowed; }
+.select-menu-suffix { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); flex-shrink: 0; }
+
+.select-menu-empty { padding: 10px 10px 12px; text-align: center; font-size: 12px; color: var(--muted); }
