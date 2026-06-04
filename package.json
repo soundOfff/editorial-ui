@@ -31,6 +31,7 @@
   ],
   "scripts": {
     "build": "tsup",
+    "build:site": "npm run build && node scripts/build-site.mjs",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

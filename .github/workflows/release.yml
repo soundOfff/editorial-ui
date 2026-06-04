@@ -1,0 +1,80 @@
+name: Release
+
+# Publishes the library to npm on every merge to main — but only when the version
+# in package.json is one that hasn't been released yet. Workflow:
+#   bump "version" in package.json  ->  merge to main  ->  npm publish
+#                                                          + git tag vX.Y.Z
+#                                                          + GitHub Release
+# Merges that don't change the version just no-op here (nothing to publish).
+#
+# Requires repository secret: NPM_TOKEN  (npm automation token with publish rights).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # allow a manual re-run from the Actions tab
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write # push the version tag + create the GitHub Release
+  id-token: write # npm publish --provenance (signed build provenance)
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # need full history + tags to detect existing releases
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+
+      - name: Resolve package version
+        id: ver
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Decide whether to release
+        id: check
+        run: |
+          VERSION="${{ steps.ver.outputs.version }}"
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "Tag v$VERSION already exists — nothing to release."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          elif npm view "editorial-ui@$VERSION" version >/dev/null 2>&1; then
+            echo "editorial-ui@$VERSION is already on npm — nothing to release."
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "editorial-ui@$VERSION is new — will publish + tag."
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # `npm publish` runs the package's prepublishOnly hook (typecheck + test +
+      # build), so quality gates run before anything reaches the registry.
+      # --provenance attaches a signed link from the published tarball back to
+      # this workflow run (public repo + public package required).
+      - name: Publish to npm
+        if: steps.check.outputs.release == 'true'
+        run: npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Tag the release + create GitHub Release
+        if: steps.check.outputs.release == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${{ steps.ver.outputs.version }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+          gh release create "v$VERSION" --title "v$VERSION" --generate-notes
