@@ -2,6 +2,8 @@
 
 A React component library built on editorial design principles — warm paper surfaces, one amber action per view, hairlines over shadows.
 
+URL: https://soundofff.github.io/editorial-ui/
+
 ## Installation
 
 ```bash
