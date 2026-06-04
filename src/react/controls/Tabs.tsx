@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useCallback } from 'react';
 
 export interface TabItem { id: string; label: React.ReactNode; }
