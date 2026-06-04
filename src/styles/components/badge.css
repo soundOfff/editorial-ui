@@ -1,11 +1,32 @@
 /* BADGE */
 .badge {
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px;
   font-family: var(--font-sans); font-size: 11px; font-weight: 600;
   padding: 2px 7px; border-radius: var(--radius-pill);
   letter-spacing: 0.01em; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
-.badge-info    { background: var(--blue-soft);  color: var(--blue-ink);  border: 1px solid var(--blue-edge); }
-.badge-success { background: var(--sage-soft);  color: var(--sage-ink);  border: 1px solid var(--sage-edge); }
-.badge-warn    { background: var(--amber-soft); color: var(--amber-deep); border: 1px solid #F0CC90; }
-.badge-danger  { background: var(--clay-soft);  color: var(--clay-ink);  border: 1px solid var(--clay-edge); }
+/* Fills are nudged a touch toward their own ink so the color reads, with a
+   color-matched outline instead of the pale neutral edge — both derived from
+   the status tokens, so dark mode re-tunes automatically. */
+.badge-info {
+  background: color-mix(in srgb, var(--blue-soft) 90%, var(--blue-ink));
+  color: var(--blue-ink);
+  border: 1px solid color-mix(in srgb, var(--blue-ink) 26%, transparent);
+}
+.badge-success {
+  background: color-mix(in srgb, var(--sage-soft) 90%, var(--sage-ink));
+  color: var(--sage-ink);
+  border: 1px solid color-mix(in srgb, var(--sage-ink) 26%, transparent);
+}
+.badge-warn {
+  background: color-mix(in srgb, var(--amber-soft) 88%, var(--amber-deep));
+  color: var(--amber-deep);
+  border: 1px solid color-mix(in srgb, var(--amber-deep) 30%, transparent);
+}
+.badge-danger {
+  background: color-mix(in srgb, var(--clay-soft) 90%, var(--clay-ink));
+  color: var(--clay-ink);
+  border: 1px solid color-mix(in srgb, var(--clay-ink) 26%, transparent);
+}

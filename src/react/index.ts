@@ -11,6 +11,8 @@ export { Textarea } from './primitives/Textarea';
 export type { TextareaProps } from './primitives/Textarea';
 export { Select } from './primitives/Select';
 export type { SelectProps } from './primitives/Select';
+export { SelectMenu } from './primitives/SelectMenu';
+export type { SelectMenuProps, SelectMenuOption } from './primitives/SelectMenu';
 export { Checkbox } from './primitives/Checkbox';
 export type { CheckboxProps } from './primitives/Checkbox';
 export { Radio } from './primitives/Radio';
